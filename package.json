@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "This repo is created to represent a solution for the task provided within the interview assessment",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "fix": "gts fix"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Mazen Bilbeisi",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.44.0",
-    "@types/node": "^20.12.11"
+    "@types/node": "^20.12.11",
+    "gts": "^5.2.0"
   }
 }
