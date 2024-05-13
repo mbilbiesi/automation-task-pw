@@ -13,8 +13,11 @@ export class LoginPage extends BasePage {
     super(page);
   }
 
-  async verifyPageElements() {
+  async verifyPageTitle() {
     await this.verifyElementTextContains(this.locators.title, 'Swag Labs', 'validate page title');
+  }
+
+  async verifyPageElements() {
     await this.verifyElementHasNoValue(this.locators.usernameField, 'verify username is empty');
     await this.verifyElementHasNoValue(this.locators.passwordField, 'verify password is empty');
     await this.verifyElementTextContains(this.locators.loginButton, 'Login', 'verify login button');
