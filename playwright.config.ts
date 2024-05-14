@@ -10,6 +10,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: process.env.WEBAPP_URL,
+    screenshot: 'only-on-failure',
     trace: 'on-first-retry',
   },
 
