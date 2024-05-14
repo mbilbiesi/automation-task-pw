@@ -40,7 +40,7 @@ const test = baseTest.extend<Pages>({
 
 test.beforeAll(async ({browser}) => {
   sharedPage = await browser.newPage();
-  await sharedPage.goto('https://www.saucedemo.com/');
+  await sharedPage.goto('/');
 });
 
 test.afterAll(async () => {
