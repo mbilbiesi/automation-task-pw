@@ -1,10 +1,10 @@
-import {LoginPage} from "../pages/LoginPage";
-import {ProductsPage} from "../pages/ProductsPage";
-import {CartPage} from "../pages/CartPage";
-import {CheckoutInformationPage} from "../pages/CheckoutInformationPage";
-import {CheckoutOverviewPage} from "../pages/CheckoutOverviewPage";
-import {CheckoutCompletePage} from "../pages/CheckoutCompletePage";
-import { Page, test as baseTest } from "@playwright/test";
+import {LoginPage} from '../pages/LoginPage';
+import {ProductsPage} from '../pages/ProductsPage';
+import {CartPage} from '../pages/CartPage';
+import {CheckoutInformationPage} from '../pages/CheckoutInformationPage';
+import {CheckoutOverviewPage} from '../pages/CheckoutOverviewPage';
+import {CheckoutCompletePage} from '../pages/CheckoutCompletePage';
+import {Page, test as baseTest} from '@playwright/test';
 
 interface Pages {
   loginPage: LoginPage;
@@ -15,25 +15,36 @@ interface Pages {
   checkoutCompletePage: CheckoutCompletePage;
 }
 
+let sharedPage: Page;
+
 const test = baseTest.extend<Pages>({
-  loginPage: async ({ page}, use) => {
-    await use(new LoginPage(page));
+  loginPage: async ({}, use) => {
+    await use(new LoginPage(sharedPage));
   },
-  productPage:async ({page}, use) => {
-    await use(new ProductsPage(page));
+  productPage: async ({}, use) => {
+    await use(new ProductsPage(sharedPage));
   },
-  cartPage:async ({page}, use) => {
-    await use(new CartPage(page));
+  cartPage: async ({}, use) => {
+    await use(new CartPage(sharedPage));
   },
-  checkoutInformationPage:async ({page}, use) => {
-    await use(new CheckoutInformationPage(page));
+  checkoutInformationPage: async ({}, use) => {
+    await use(new CheckoutInformationPage(sharedPage));
   },
-  checkoutOverviewPage:async ({page}, use) => {
-    await use(new CheckoutOverviewPage(page));
+  checkoutOverviewPage: async ({}, use) => {
+    await use(new CheckoutOverviewPage(sharedPage));
   },
-  checkoutCompletePage:async ({page}, use) => {
-    await use(new CheckoutCompletePage(page));
-  }
+  checkoutCompletePage: async ({}, use) => {
+    await use(new CheckoutCompletePage(sharedPage));
+  },
+});
+
+test.beforeAll(async ({browser}) => {
+  sharedPage = await browser.newPage();
+  await sharedPage.goto('https://www.saucedemo.com/');
+});
+
+test.afterAll(async () => {
+  await sharedPage.close();
 });
 
 export default test;
