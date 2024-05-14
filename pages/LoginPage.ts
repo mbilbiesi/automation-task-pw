@@ -7,6 +7,7 @@ export class LoginPage extends BasePage {
     usernameField: '[data-test="username"]',
     passwordField: '[data-test="password"]',
     loginButton: '[data-test="login-button"]',
+    errorLabel: '[data-test="error"]',
   };
 
   constructor(page: Page) {
@@ -35,5 +36,9 @@ export class LoginPage extends BasePage {
 
   async clickOnLogin() {
     await this.clickOnElement(this.locators.loginButton);
+  }
+
+  async verifyErrorMessage(expectedErrorMessage: string, message: string) {
+    await this.verifyElementTextContains(this.locators.errorLabel, expectedErrorMessage, message);
   }
 }
