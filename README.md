@@ -1,5 +1,5 @@
 
-# InPost Interview Assessment
+# Demo Tests using playwright framework
 
 This repository contains the automation tests for the InPost interview assessment task. The tests are created using the Playwright framework.
 
