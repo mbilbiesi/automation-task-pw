@@ -1,4 +1,5 @@
 import test from './BaseTest';
+import {describe} from 'node:test';
 
 const scenarios = [
   {
@@ -27,14 +28,16 @@ const scenarios = [
   },
 ];
 
-scenarios.forEach(scenario => {
-  test(`login page - should display error upon ${scenario.description}`, async ({loginPage}) => {
-    // When
-    await loginPage.insertUsername(scenario.username);
-    await loginPage.insertPassword(scenario.password);
-    await loginPage.clickOnLogin();
+describe('Login Page Tests', () => {
+  scenarios.forEach(scenario => {
+    test(`login page - should display error upon ${scenario.description}`, async ({loginPage}) => {
+      // When
+      await loginPage.insertUsername(scenario.username);
+      await loginPage.insertPassword(scenario.password);
+      await loginPage.clickOnLogin();
 
-    // Then
-    await loginPage.verifyErrorMessage(scenario.expectedError, scenario.description);
+      // Then
+      await loginPage.verifyErrorMessage(scenario.expectedError, scenario.description);
+    });
   });
 });

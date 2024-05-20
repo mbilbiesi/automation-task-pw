@@ -18,24 +18,6 @@ This repository contains the automation tests for the InPost interview assessmen
 - Node.js (v20.11.1)
 - npm (v10.2.4)
 
-## Framework and Configuration Setup
-
-- Implemented the Page Object Model (POM) for managing page elements and actions.
-- Managed test settings via a configuration file, including base URLs, wait timeouts, browser drivers.
-- Enabled screenshot capabilities for better debugging.
-
-## Test Lifecycle Management
-
-- Utilized `beforeAll` and `afterAll` hooks for setup and create a shared page for serialized e2e test.
-
-## Negative and Field Validation Testing
-
-- Validated correct data entry in login fields.
-
-## Cross-Browser Compatibility and Test Suites
-
-- Ensured tests are compatible with at least Chrome, Firefox, and Safari (WebKit) browsers.
-
 ## Installation
 
 1. Clone the repository:
@@ -47,11 +29,6 @@ This repository contains the automation tests for the InPost interview assessmen
 2. Install the dependencies:
    ```bash
    npm install
-   ```
-
-3. Create a `.env` file in the root directory and add the website URL:
-   ```
-   WEBSITE_URL=<your-website-url>
    ```
 
 ## Running the Tests
